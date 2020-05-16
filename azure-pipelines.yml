@@ -64,10 +64,9 @@ stages:
 
     - publish: '$(Build.ArtifactStagingDirectory)'
       artifact: drop
-
-- job: BuildDacpac
+  - job: BuildDacpac
     pool:
-      vmImage: 'windows-latest'
+      vmImage: 'windows-2019'
     steps:
     - task: DotNetCoreCLI@2
       displayName: 'Restore project dependencies'
@@ -100,7 +99,7 @@ stages:
   jobs:
   - deployment: DBAVerificationScript
     pool:
-      vmImage: 'windows-latest'
+      vmImage: 'windows-2019'
     variables:
     - group: 'Release'
     environment: 'dbaverificationscript'
@@ -138,7 +137,7 @@ stages:
   jobs:
   - deployment: DBAVerificationApply
     pool:
-      vmImage: 'windows-latest'
+      vmImage: 'windows-2019'
     variables:
     - group: 'Release'
     environment: 'dbaverificationapply'
